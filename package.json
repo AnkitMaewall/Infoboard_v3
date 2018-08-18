@@ -1,0 +1,23 @@
+{
+  "name": "infoboard_v3",
+  "version": "1.0.0",
+  "description": "Personal Kitchen UI",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnkitMaewall/Infoboard_v3.git"
+  },
+  "author": "Ankit Maewall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnkitMaewall/Infoboard_v3/issues"
+  },
+  "homepage": "https://github.com/AnkitMaewall/Infoboard_v3#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "express": "^4.16.3"
+  }
+}
