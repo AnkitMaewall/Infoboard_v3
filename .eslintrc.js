@@ -2,8 +2,9 @@ module.exports = {
   "extends": "airbnb-base",
   "rules": {
     // enable additional rules
-    "indent": ["error", 4],
-    "linebreak-style": ["error", "windows"],
+    //"indent": ["error", 2],
+    "comma-dangle":0,
+    "linebreak-style": 0
     //"quotes": ["error", "double"],
     //"semi": ["error", "always"],
 
