@@ -3,32 +3,41 @@ const chalk = require('chalk');
 const debug = require('debug')('infoboard_v3');
 const morgan = require('morgan');
 const path = require('path');
+const bodyParser = require('body-parser');
+
 // "$Env:DEBUG=\"infoboard_v3\"; ", [Environment]::SetEnvironmentVariable("DEBUG","express:*");
 const app = express();
 const port = process.env.PORT || 3000;
-const bookRouter = express.Router();
 
+app.use((req, res, next) => {
+  debug('my middleware');
+  next();
+});
 app.use(morgan('tiny'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(express.static(path.join(__dirname, '/public/')));
 app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));
 app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js')));
 app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
+ 
+const nav = [{ link: '/home', title: 'Home' },
+  { link: '/security', title: 'Security' },
+  { link: '/maintanence', title: 'Maintanence' },
+  { link: '/map', title: 'Map' }
+];
 
-app.get('/Security',); // what is this
+const maintanenceRouter = require('./src/routes/maintanenceRoutes')(nav);
+const adminRouter = require('./src/routes/adminRoutes')(nav);
+const authRouter = require('./src/routes/authRoutes')(nav);
 
-bookRouter.route('/')
-  .get((req, res) => {
-    res.send('hello maintanence');
-  });
+app.use('/maintanence', maintanenceRouter);
+app.use('/admin', adminRouter);
+app.use('/auth', authRouter);
 
-bookRouter.route('/request')
-  .get((req, res) => {
-    res.send('hello first maintanence request');
-  });
-  
-app.use('/Maintanence', bookRouter);
 app.get('/', (req, res) => {
   res.render(
     'index', {
