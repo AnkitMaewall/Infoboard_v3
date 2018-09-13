@@ -40,7 +40,7 @@ function router(nav) {
           debug('Connected to Server');
           const db = client.db(dbName);
 
-          const response = await db.collection('requests'); // .insertMany(maintanence);
+          const response = await db.collection('requests').insertMany(maintanence);
           res.json(response);
         } catch (err) {
           debug(err.stack);

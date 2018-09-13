@@ -37,10 +37,12 @@ const nav = [{ link: '/home', title: 'Home' },
   { link: '/map', title: 'Map' }
 ];
 
+const homeRouter = require('./src/routes/homeRoutes')(nav);
 const maintanenceRouter = require('./src/routes/maintanenceRoutes')(nav);
 const adminRouter = require('./src/routes/adminRoutes')(nav);
 const authRouter = require('./src/routes/authRoutes')(nav);
 
+app.use('/home', homeRouter);
 app.use('/maintanence', maintanenceRouter);
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);

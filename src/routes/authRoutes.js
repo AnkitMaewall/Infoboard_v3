@@ -1,7 +1,7 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const debug = require('debug');
-const passport= require('passport');
+const passport = require('passport');
 
 const authRouter = express.Router();
 
@@ -44,6 +44,13 @@ function router(nav) {
       failureRedirect: '/'
     }));
   authRouter.route('/profile')
+    .all((req, res, next) => {
+      if (req.user) {
+        next();
+      } else {
+        res.redirect('/');
+      }
+    })
     .get((req, res) => {
       res.json(req.user);
     });

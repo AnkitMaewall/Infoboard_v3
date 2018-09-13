@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/AnkitMaewall/Infoboard_v3#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
     "chalk": "^2.4.1",
@@ -32,7 +33,8 @@
     "morgan": "^1.9.0",
     "nodemon": "^1.18.3",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "todoist-js": "^0.3.1"
   },
   "devDependencies": {
     "eslint": "^5.4.0",
